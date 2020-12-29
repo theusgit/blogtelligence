@@ -1,0 +1,437 @@
+Relacionamentos
+Relacionar tabelas entre si
+
+1 para 1
+Uma atividade tem uma aula
+
+1 para N
+Um vendedor atende vários clientes
+
+N para N
+Muitos produtos para muitas notas
+------------------------------------
+Iniciando projeto
+npm init
+npm install --save express
+sequelize
+mysql2
+body parser/trabalhar com forms
+ejs
+
+Criar arquivo principal index.js
+iniciar express
+express dentro de app
+
+abrir rota app.get com endereço da rota, requisição e resposta e o send de retorno
+
+app. listen e o local mais uma função de callback
+
+const express = require('express');
+const app = express();
+
+app.get("/",(req,res)=>{
+    res.send("Olá")
+})
+
+app.listen(2020,()=>{
+    console.log("Rodando!")
+})
+--------------------------------------
+Configurar view  engine
+
+app.set('view engine','ejs');
+
+criar pasta views
+arquivo index.ejs
+fazer um h1 pra testar
+
+voltar no index principal 
+substituir res.send por res.render("index")
+
+usar body-parser
+iniciar body
+const bodyParser = require('body-parser');
+
+abrir rotas 
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+Arquivos estaticos para css e imagens
+
+app.use(express.static('public'));
+criar pasta public
+
+config banco de dados
+abrir work
+criar banco de dados com nome do projeto
+clicar no icone com maiszinho
+
+criar pasta database
+criar arquivo com nome database.js
+
+importar sequelize
+const Sequelize = require("sequelize");
+
+criar objeto de connection
+const connection = new Sequelize('blogtelligence','root','M4theus$$',{
+    host: 'localhost',
+    dialect: 'mysql'
+});
+nome do banco, root, senha, host e dialeto
+
+exportar 
+module.exports = connection;
+
+importar em index
+const connection = require("./database/database");
+nome da pasta, nome do arquivo
+
+Conectar ao banco 
+index principal
+
+as funções começam com um ponto na frente 
+chamar connection
+autenticar
+.then se isso acontecer com sucesso dar mensagem de sucesso no console
+se não tratar com catch error e console no erro
+
+connection
+    .authenticate()
+    .then(()=>{
+        console.log("Successful connection")
+    }).catch((error)=>{
+        console.log(error);
+    })
+--------------------------------------
+Configurar bootstrap
+
+baixar css e js compilados do bootstrap e colocar em public
+criar pasta partials dentro de views
+criar arquivo header.ejs colocar um html5 
+colocar um link href 
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+//esse bootstrap esta na pasta public dentro da pasta css
+não precisa de public pois já inicia automaticamente
+
+criar arquivo footer.ejs dentro de
+partials
+footer fecha o </html> que esta aberto em header
+colocar scripts do bootstrap segundo bloco de scripts
+
+colocar script do js
+<script src="/js/bootstrap.min.js"></script> 
+
+--------------------------------------
+Organização e arquitetura
+Separar por dominio
+padrão de organização
+
+Pasta categorias(funcionalidades de categorias)
+
+Pasta de artigos
+article
+
+controller dentro das pastas
+CategoriesController.js
+
+Usar express router
+criar rotas sem necessidade de usar var app
+
+carregar express
+carregar rounter
+
+definir rotas como quiser
+
+a diferença de usar var ou rounter é colocar router.get ou router.set
+
+abrir router.get
+res.send
+
+exportar router para linkar no principal
+
+module.exports=router;
+
+1
+const express = require("express");
+const router = express.Router();
+
+router.get("/categorias",(req, res)=>{
+    res.send("categorias")
+});
+
+router.get("/admin/categorias",(req,res)=>{
+    res.send("Novas categorias")
+});
+
+module.exports=router;
+
+2
+carregar no arquivo principal
+const CategoriesController=require("./categories/CategoriesController");
+
+
+Para dizer ao express que quero utilizar essas rotas
+
+abaixo da conexão
+
+app.use("/",categoriesController);
+
+prefixo
+é algo para digitar antes das rotas
+só acessa as rotas se colocar prefixo
+
+
+Criar outro controller na parte de articles
+ArticlesController.js
+
+copiar estrutura de categories e mudar rotas
+
+importar controller
+-------------------------------------
+Model de categoria
+criar aquivo category em pasta categories
+
+const sequelize = require("sequelize");
+const connection = require("../database/database");
+
+const Category = connection.define('categories',{
+    title:{
+        type:Sequelize.STRING,
+        allowNull: false
+    },slug:{
+        type:Sequelize.STRING,
+        allowNull:false
+    }  
+})
+
+module.exports=Category;
+--------------------------------
+Model de artigo
+
+criar arquivo Article.js sempre definir com letra maiuscula e singular
+
+const sequelize = require("sequelize");
+const connection = require("../database/database");
+
+const Article = connection.define('articles',{
+    title:{
+        type:Sequelize.STRING,
+        allowNull: false
+    },
+    slug:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
+    body:{
+        type:Sequelize.TEXT,
+        allowNull:false
+    }
+})
+
+module.exports=Article;
+
+body é o corpo do artigo
+--------------------------------------
+Relacionamento do Sequelize
+
+Todo artigo pertence a uma categoria
+1 para 1
+
+uma categoria pode ter vários artigos
+1 para N
+-----------------------------------
+Definir relacionamentos
+
+importar o model categorias em articles
+
+usar belongsTo que significa a pertence a...
+1 para 1 = belongsTo
+
+hasMany representa um para muitos
+
+precisa atualizar banco de dados
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
