@@ -251,6 +251,52 @@ hasMany representa um para muitos
 
 precisa atualizar banco de dados
 
+-------------------------------------
+Criando tabela
+Em categoriesController.js
+
+router.get("/admin/categories",(req,res)=>{
+    res.render("admin/categories/index")
+});
+Define a rota da tabela
+
+
+
+Criar novo arquivo dentro de views...categories
+importar os includes
+<div class="container">
+            <hr>
+            <h2>Categorias</h2>
+            <hr>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Slug</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <th>Dev Web</th>
+                        <th>dev-web</th>
+                        <th></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+tablr bordered exibe bordas
+thead cria campo para tabela 
+tr cria linha
+th cria campo
+
+
+
+
+
 
 
 
