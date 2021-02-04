@@ -292,6 +292,39 @@ tablr bordered exibe bordas
 thead cria campo para tabela 
 tr cria linha
 th cria campo
+--------------------------
+Listagem de categorias
+
+dentro de router.get
+ Category.findAll().then(categories =>{
+        res.render("admin/categories/index",{categories:categories})
+    });
+Category é o nome do nosso banco de dados que recebe a tabela
+ele busca em category com findAll e depois cria uma funão categories que recebe res.render com a rota index que exibe o front
+logo depois a var dentro de chaves que vai ser usada no front
+
+index.ejs
+<% categories.forEach(category=>{ %>
+<tr>
+<th><%= category.id%></th>
+<th><%= category.title%></th>
+<th><%= category.slug%></th>
+<th></th>
+</tr>
+<% }) %>
+exibe os dados que o banco recebe
+com o ejs
+
+
+
+
+
+
+
+
+
+
+
 
 
 
