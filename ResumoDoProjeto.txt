@@ -315,6 +315,37 @@ index.ejs
 exibe os dados que o banco recebe
 com o ejs
 
+--------------------------------------
+Facilitando a navegação
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
