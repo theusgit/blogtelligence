@@ -317,6 +317,52 @@ com o ejs
 
 --------------------------------------
 Facilitando a navegação
+83
+
+-------------------------------------
+router.get("categories/delete",(req,res)=>{
+    var id = req.body.id;
+    if(id != undefined){
+        if(!isNaN(id)){
+            Category.destroy({
+                where: {
+                    id:id
+                }
+            }).then(()=>{
+                res.redirect("/admin/categories");
+            });
+        }else{
+            res.redirect("/admin/categories");
+        }
+    }else{
+        res.redirect("/admin/categories");
+    }
+})
+
+verificar se ele é diferente de null
+verificar se o id é do tipo numero
+se o id não for numerico o user será redirecionado
+
+Front End de index.ejs de categories
+ 
+<form method="POST" action="/categories/delete" style="display: inline;">
+                                    <input type="hidden" name="id" value="<%= category.id %>"> 
+                                    <button class="btn btn-danger">Excluir</button>
+                                </form>
+
+metodo POST
+action apontando para a rota
+esse style é para deixar tudo alinhado em linha
+tipo hidden esconde esse input que recebe uma variavel ejs com a categoria e o id da categoria
+--------------------------------------
+
+
+
+
+
+
+
+
 
 
 
