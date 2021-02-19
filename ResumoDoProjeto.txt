@@ -356,9 +356,35 @@ esse style é para deixar tudo alinhado em linha
 tipo hidden esconde esse input que recebe uma variavel ejs com a categoria e o id da categoria
 --------------------------------------
 
+Previnindo acidentes
 
+form method="POST" action="/categories/delete" style="display: inline;"
+                                    onsubmit="confirmarDelecao(event,this)
 
+onsubmit ouve o botão de excluir
 
+criar função que confirme a deleção
+function confirmarDelecao(event, form) {
+                    event.preventDefault();
+                    var decision = confirm("Você quer deletar está categoria?");
+                    if (decision) {
+                        form.submit();
+                    }
+                }
+
+essa função recebe como parâmetro o event, responsavel por retornar os eventos da tela
+
+o onsubmit agora recebe a função confirmadelecao essa função retorna um parâmetro de event
+
+eevent.preventDefault(); cancela o envio do formulário esse formulário esta em event
+
+confirm retorna true ou false 
+
+se decision for true
+form.subimt(); 
+submit envia formulário
+
+é preciso passar como parâmetro o form
 
 
 
