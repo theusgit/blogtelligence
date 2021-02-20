@@ -386,6 +386,73 @@ submit envia formulário
 
 é preciso passar como parâmetro o form
 
+--------------------------------------
+
+router.get("/admin/categories/edit/:id", (req, res) => {
+    var id = req.params.id;
+    Category.findByPk(id).then(categoria => {
+        if(categoria != undefined){
+            res.render("admin/categories/edit",{categoria:categoria})
+
+
+        }else{
+            res.redirect("/admin/categories");
+        }
+    }).catch(erro=>{
+        res.redirect("/admin/categories");
+    })
+});
+
+rota de categorias com id 
+findByPK(id) é o método de procura de categories
+
+se categoria for diferente de não definido isso é se for definido
+então vai para um view
+passando os dados da view
+
+criar novo arquivo 
+edit.ejs
+copiar o da new e colar no edit
+
+
+Resolver o problema de 
+se colocar 10abcabcd ele encontra a categoria mesmo invalido
+
+Se eu colocar um numero na frente da letra o sequelize so pega o numero e encontra a categoria
+
+para corrigir 
+Ir no controler de rota 
+apos receber o id verificar se ele não é um numero
+se ele naõ for um numero redirect
+
+Corrigir rota 
+post("/categories/save"
+res.redirect("/admin/categories");
+
+value="<%=category.title %>">
+esse value colocar no campo a categoria que foi escolhida para editar
+
+ if(isNaN(id)){
+        res.redirect("/admin/categories")
+    }
+se não for um numero redirecionar pro mesmo lugar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
