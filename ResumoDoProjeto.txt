@@ -446,6 +446,56 @@ colocar href
 -------------------------------------
 Salvando dados da categoria no banco
 
+router.post("/categories/update", (req, res) => {
+    var id = req.body.id;
+    var title = req.body.title;
+
+    Category.update({ title: title }, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.redirect("/admin/categories");
+    })
+});
+
+
+criando post para enviar
+criando var para id e title
+category title pega o title onde o id é igual ao id escolhido e com update atualiza
+depois redirecicona para categories
+
+em edit.ejs
+<input type="hidden" name="id" value="<%= category.id %>">
+
+hidden não aparece
+
+Para atualizar também no slug
+ Category.update({ title: title, slug:slugify(title)
+
+slugfy é o método
+-------------------------------------
+Formulário de artigos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
