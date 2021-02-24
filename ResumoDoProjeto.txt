@@ -436,6 +436,15 @@ esse value colocar no campo a categoria que foi escolhida para editar
         res.redirect("/admin/categories")
     }
 se não for um numero redirecionar pro mesmo lugar
+--------------------------------------
+Linkar botões de edição
+
+na view index.ejs
+button por a
+colocar href
+<a href="/admin/categories/edit/<%= category.id %>"class="btn btn-warning">Editar</a>
+-------------------------------------
+Salvando dados da categoria no banco
 
 
 
