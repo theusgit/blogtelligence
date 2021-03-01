@@ -509,6 +509,9 @@ adicionar id article a texterea para identificar que é essa
 
 tiny iniciado e dando suporte ao id escolhido
 
+plugins: [ 'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons' ]
+
+ler doc caso queira algum especifico
 
 
 
