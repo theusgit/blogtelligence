@@ -477,12 +477,37 @@ slugfy é o método
 -------------------------------------
 Formulário de artigos
 
+Criar nova pasta dentro de admin
+articles
+novo arquivo 
+new.ejs
 
+esse new vai ser o arquivo de artigos
+copiar estrutura do new.ejs de categorias
 
+Ir em ArticlesController.js
+na segunda rota
+render ("admin/articles/new")
 
+--------------------------------------
+TinY
 
+baixar
+https://www.tiny.cloud/get-tiny/self-hosted/
 
+ir até o arquivo
+tinymce que esta dentro de js e colocar em public
 
+dentro da view que vai utilizar
+<script src="/tinymce/tinymce.min.js"></script>
+
+adicionar id article a texterea para identificar que é essa
+
+  tinymce.init({
+                selector: "#article"
+            })
+
+tiny iniciado e dando suporte ao id escolhido
 
 
 
