@@ -512,7 +512,28 @@ tiny iniciado e dando suporte ao id escolhido
 plugins: [ 'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons' ]
 
 ler doc caso queira algum especifico
+-------------------------------------
 
+Dropdown de categorias
+listar categorias
+
+importar Category
+const Category = require('../categories/Category')
+
+  Category.findAll().then(categories=>{
+        res.render("admin/articles/new",{categories:categories})
+    })
+
+procura e exibe no front
+
+<label>Categorias</label>
+                        <select name="category" class="form-control">
+                            <% categories.forEach((category)=>{ %>
+                                <option value="<%= category.id %>">
+                                    <%= category.title %>
+                                </option>
+                                <% }) %>
+                        </select><br>
 
 
 
